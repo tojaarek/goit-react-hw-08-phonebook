@@ -7,9 +7,9 @@ const setHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const clearToken = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
+//const clearToken = () => {
+//  axios.defaults.headers.common.Authorization = '';
+//};
 
 export const signUp = createAsyncThunk(
   'AUTH/REGISTER',
