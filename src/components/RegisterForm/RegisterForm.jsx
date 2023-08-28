@@ -1,5 +1,4 @@
 import { useDispatch } from 'react-redux';
-import css from './RegisterForm.module.css';
 import { signUp } from 'redux/auth/actions';
 import {
   FormBox,
@@ -67,9 +66,7 @@ const RegisterForm = () => {
       <center>
         <Wrapper>
           Already have an account?
-          <Redirect to="/login" className={css.link}>
-            Sign in
-          </Redirect>
+          <Redirect to="/login">Sign in</Redirect>
         </Wrapper>
       </center>
     </FormBox>
