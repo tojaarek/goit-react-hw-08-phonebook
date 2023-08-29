@@ -27,7 +27,7 @@ const LoginForm = () => {
   };
   return (
     <FormBox>
-      <Logo>monoContact</Logo>
+      <Logo to="/">monoContact</Logo>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <Headline>Welcome back</Headline>
         <Subheadline>
@@ -42,7 +42,7 @@ const LoginForm = () => {
           <Label>Password</Label>
         </InputBox>
         <center>
-          <Button type="submit">Sign In</Button>
+          <Button type="submit">Log in</Button>
         </center>
       </form>
       <center>

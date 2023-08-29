@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { signUp, signIn } from './actions';
+import { signUp, signIn, refreshUser, logOut } from './actions';
 
 const initialState = {
   user: { name: null, email: null },
@@ -11,17 +11,31 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  extraReducers: {
-    [signUp.fulfilled](state, action) {
-      state.user = action.playload.user;
-      state.token = action.playload.token;
-      state.isLoggedIn = true;
-    },
-    [signIn.fulfilled](state, action) {
-      state.user = action.playload.user;
-      state.token = action.playload.token;
-      state.isLoggedIn = true;
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(signUp.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(signIn.fulfilled, (state, action) => {
+        state.name = action.payload.name;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(logOut.fulfilled, state => {
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+      })
+      .addCase(refreshUser.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      });
   },
 });
 

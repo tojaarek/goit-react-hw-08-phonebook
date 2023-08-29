@@ -1,10 +1,13 @@
 import LoginForm from 'components/LoginForm/LoginForm';
 import { Container } from '../RegisterPage/RegisterPage.styled';
+import Transitions from 'const/transition';
 
 const LoginPage = () => (
-  <Container>
-    <LoginForm />
-  </Container>
+  <Transitions>
+    <Container>
+      <LoginForm />
+    </Container>
+  </Transitions>
 );
 
 export default LoginPage;

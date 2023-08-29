@@ -10,7 +10,7 @@ export const FormBox = styled.div`
   border-radius: 10px;
 `;
 
-export const Logo = styled.p`
+export const Logo = styled(Link)`
   font-size: 18px;
   font-weight: 600;
   color: #fbfbfb;
@@ -20,6 +20,8 @@ export const Logo = styled.p`
   text-decoration: none;
   z-index: 3;
   margin-top: 0;
+  margin-bottom: 20px;
+  display: block;
 
   &:before {
     content: '';
@@ -92,7 +94,8 @@ export const Input = styled.input`
   }
 
   &:focus ~ ${Notice} {
-    opacity: 1;
+    opacity: 1 !important;
+    color: #ff8a05 !important;
   }
 `;
 

@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { SignUp, Login } from 'components/AppBar/AppBar.styled';
 
 const Navigation = () => {
   return (
     <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/contacts">Contacts</NavLink>
+      <Login to="/login">Log in</Login>
+      <SignUp to="/register">Sign up</SignUp>
     </nav>
   );
 };
