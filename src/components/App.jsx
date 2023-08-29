@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import ContactsPage from 'pages/ContactsPage/ContactsPage';
 import Layout from 'layouts/layout';
 import { useDispatch } from 'react-redux';
-import { useEffect, lazy } from 'react';
+import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/actions';
 import { useAuth } from 'hooks/useAuth';
 import { RestrictedRoute } from './RestrictedRoute';
