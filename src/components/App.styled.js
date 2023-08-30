@@ -23,3 +23,14 @@ export const Container = styled.div`
     max-width: 1400px;
   }
 `;
+
+export const Spinner = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;

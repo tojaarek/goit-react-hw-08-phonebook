@@ -11,6 +11,8 @@ import HomePage from 'pages/HomePage/HomePage';
 import RegisterPage from 'pages/RegisterPage/RegisterPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import AboutPage from 'pages/AboutPage/AboutPage';
+import { Spinner } from './App.styled';
+import { Circles } from 'react-loader-spinner';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -21,7 +23,18 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p>Refreshing user...</p>
+    <Spinner>
+      Refreshing user...
+      <Circles
+        height="60"
+        width="60"
+        color="#ff8a05"
+        ariaLabel="circles-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+      />
+    </Spinner>
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

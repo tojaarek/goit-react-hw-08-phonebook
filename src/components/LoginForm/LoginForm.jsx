@@ -15,6 +15,7 @@ import { signIn } from 'redux/auth/actions';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -24,6 +25,7 @@ const LoginForm = () => {
         password: form.elements.password.value,
       })
     );
+    form.reset();
   };
   return (
     <FormBox>
