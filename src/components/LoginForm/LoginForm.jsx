@@ -21,12 +21,14 @@ const LoginForm = () => {
     const form = event.currentTarget;
     dispatch(
       signIn({
-        email: form.elements.email.vaule,
+        email: form.elements.email.value,
         password: form.elements.password.value,
       })
     );
+
     form.reset();
   };
+
   return (
     <FormBox>
       <Logo to="/">monoContact</Logo>
