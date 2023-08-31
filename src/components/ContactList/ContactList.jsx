@@ -1,14 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/contacts/actions';
 import { useEffect } from 'react';
-import { selectLoading, selectContacts } from 'redux/contacts/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import Contact from 'components/Contact/Contact';
-import { Spinner } from './ContactList.styled';
-import { Circles } from 'react-loader-spinner';
 
 const ContactList = ({ filter }) => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectLoading);
   const contacts = useSelector(selectContacts);
 
   useEffect(() => {
