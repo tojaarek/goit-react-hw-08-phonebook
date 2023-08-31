@@ -5,11 +5,17 @@ const initialState = {
   items: [],
   isLoading: false,
   error: null,
+  contactId: null,
 };
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
+  reducers: {
+    setContactId(state, action) {
+      state.contactId = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getContacts.pending, state => {
@@ -71,4 +77,5 @@ const contactsSlice = createSlice({
   },
 });
 
+export const { setEdit, setContactId } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

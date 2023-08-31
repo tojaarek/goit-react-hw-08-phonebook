@@ -1,56 +1,51 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteContact, editContact } from 'redux/contacts/actions';
 import Transitions from 'const/transition';
-import { selectEditing } from 'redux/contacts/selectors';
-import { setEdit } from 'redux/contacts/editSlice';
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact, contactToEdit, onEdit }) => {
   const dispatch = useDispatch();
-  const isEditing = useSelector(selectEditing);
 
   const handleDelete = () => {
     dispatch(deleteContact(contact.id));
   };
 
   const handleEdit = () => {
-    dispatch(setEdit(true));
+    onEdit(contact.id);
   };
 
   const handleSave = event => {
     event.preventDefault();
     const form = event.currentTarget;
     const updatedContact = {
-      name: form.elements.name.value,
-      number: form.elements.number.value,
+      name: form.elements.name.value.trim() || contact.name,
+      number: form.elements.number.value.trim() || contact.number,
     };
-    console.log(updatedContact);
-    dispatch(editContact(contact.id, updatedContact));
-    dispatch(setEdit(false));
+
+    dispatch(editContact({ id: contact.id, ...updatedContact }));
+    onEdit(null);
   };
 
   return (
     <Transitions>
       <li>
         <div>
-          {isEditing ? (
-            <form autoComplete="off" onSubmit={handleSave}>
-              <input
-                type="text"
-                name="name"
-                placeholder={contact.name}
-                required
-              />
+          {contactToEdit === contact.id ? (
+            <Transitions>
+              <form autoComplete="off" onSubmit={handleSave}>
+                <input type="text" name="name" placeholder={contact.name} />
+                <input type="text" name="number" placeholder={contact.number} />
+                <button type="submit">Save</button>
+              </form>
+            </Transitions>
+          ) : (
+            <>
+              <input type="text" name="name" value={contact.name} disabled />
               <input
                 type="text"
                 name="number"
-                placeholder={contact.number}
-                required
+                value={contact.number}
+                disabled
               />
-              <button type="submit">Save</button>
-            </form>
-          ) : (
-            <>
-              {contact.name}: {contact.number}
               <button onClick={handleEdit}>Edit</button>
               <button onClick={handleDelete}>Delete</button>
             </>
