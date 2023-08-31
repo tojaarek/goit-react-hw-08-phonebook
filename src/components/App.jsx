@@ -13,6 +13,7 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import AboutPage from 'pages/AboutPage/AboutPage';
 import { Spinner } from './App.styled';
 import { Circles } from 'react-loader-spinner';
+import UserPage from 'pages/UserPage/UserPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -44,11 +45,22 @@ export const App = () => {
             <RestrictedRoute redirectTo="/contacts" component={<HomePage />} />
           }
         />
-        <Route path="/about" element={<AboutPage />} />
+        <Route
+          path="/about"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<AboutPage />} />
+          }
+        />
         <Route
           path="/contacts"
           element={
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+        <Route
+          path="/user"
+          element={
+            <PrivateRoute redirectTo="/login" component={<UserPage />} />
           }
         />
       </Route>

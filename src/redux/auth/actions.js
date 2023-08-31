@@ -16,10 +16,9 @@ export const signUp = createAsyncThunk(
   'AUTH/REGISTER',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/users/signup', credentials);
-      console.log(response.data.token);
-      setHeader(response.data.token);
-      return response.data;
+      const { data } = await axios.post('/users/signup', credentials);
+      setHeader(data.token);
+      return data;
     } catch (error) {
       toast.error('This email address is already registered', {
         position: toast.POSITION.TOP_CENTER,
@@ -33,9 +32,9 @@ export const signIn = createAsyncThunk(
   'AUTH/LOGIN',
   async (credentials, thunkAPI) => {
     try {
-      const response = await axios.post('/users/login', credentials);
-      setHeader(response.data.token);
-      return response.data;
+      const { data } = await axios.post('/users/login', credentials);
+      setHeader(data.token);
+      return data;
     } catch (error) {
       toast.error('The email address or password is incorrect.', {
         position: toast.POSITION.TOP_CENTER,
@@ -66,8 +65,8 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setHeader(token);
-      const response = await axios.get('/users/current');
-      return response.data;
+      const { data } = await axios.get('/users/current');
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
