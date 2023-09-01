@@ -1,12 +1,15 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, editContact } from 'redux/contacts/actions';
 import { Input, Button, ButtonFilled, Box, Item } from './Contact.styled';
 import { confirmAlert } from 'react-confirm-alert';
 import './react-confirm-alert.css';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { selectContacts } from 'redux/contacts/selectors';
 
 const Contact = ({ contact, contactToEdit, onEdit }) => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleDelete = () => {
     confirmAlert({
@@ -38,7 +41,15 @@ const Contact = ({ contact, contactToEdit, onEdit }) => {
       name: form.elements.name.value.trim() || contact.name,
       number: form.elements.number.value.trim() || contact.number,
     };
-
+    const duplicateContact = contacts.find(
+      existing => existing.name === updatedContact.name
+    );
+    if (duplicateContact) {
+      toast.error(`${updatedContact.name} is already in contacts`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return;
+    }
     dispatch(editContact({ id: contact.id, ...updatedContact }));
     onEdit(null);
   };
