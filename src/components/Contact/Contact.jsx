@@ -11,6 +11,10 @@ const Contact = ({ contact, contactToEdit, onEdit }) => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
+  const handleCancel = () => {
+    onEdit(null);
+  };
+
   const handleDelete = () => {
     confirmAlert({
       title: 'Confirm Delete',
@@ -65,6 +69,7 @@ const Contact = ({ contact, contactToEdit, onEdit }) => {
             </div>
             <div>
               <ButtonFilled type="submit">Save</ButtonFilled>
+              <Button onClick={handleCancel}>Cancel</Button>
             </div>
           </Box>
         </form>
