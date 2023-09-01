@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import ContactsPage from 'pages/ContactsPage/ContactsPage';
-import Layout from 'layouts/layout';
+import Layout from './Layouts/Layout';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/actions';
