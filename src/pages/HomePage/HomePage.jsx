@@ -18,9 +18,13 @@ import read from './images/read.png';
 import update from './images/update.png';
 import remove from './images/delete.png';
 import Transitions from 'const/transition';
+import { Helmet } from 'react-helmet';
 
 const HomePage = () => (
   <Transitions>
+    <Helmet>
+      <title>monoContact | Home page</title>
+    </Helmet>
     <Section>
       <Container>
         <TextBox>

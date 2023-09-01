@@ -10,3 +10,10 @@ export const Spinner = styled.div`
   align-items: center;
   height: 100%;
 `;
+
+export const List = styled.ul`
+  list-style: none;
+  padding: 0;
+  overflow: scroll;
+  height: 265px;
+`;

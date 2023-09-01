@@ -1,8 +1,12 @@
 import { FormBox, Label, Input } from './Filter.styled';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/contacts/filterSlice';
 
-const Filter = ({ filter, onFilterChange }) => {
+const Filter = () => {
+  const dispatch = useDispatch();
+
   const handleChange = event => {
-    onFilterChange(event.target.value);
+    dispatch(setFilter(event.target.value));
   };
 
   return (
@@ -11,7 +15,7 @@ const Filter = ({ filter, onFilterChange }) => {
         <Input
           id="searchInput"
           type="text"
-          value={filter}
+          name="filter"
           onChange={handleChange}
           required
         />

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const FormBox = styled.div`
   position: relative;
+  margin-bottom: 53px;
 `;
 
 export const Input = styled.input`

@@ -6,11 +6,15 @@ import {
   Label,
   Button,
 } from 'components/AddContactForm/AddContactForm.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/actions';
+import { selectContacts } from 'redux/contacts/selectors';
+import { toast } from 'react-toastify';
 
 const AddContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -18,6 +22,15 @@ const AddContactForm = () => {
       name: form.elements.name.value,
       number: form.elements.number.value,
     };
+    const duplicateContact = contacts.find(
+      existing => existing.name === newContact.name
+    );
+    if (duplicateContact) {
+      toast.error(`${newContact.name} is already in contacts`, {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      return;
+    }
     dispatch(addContact(newContact));
     form.reset();
   };

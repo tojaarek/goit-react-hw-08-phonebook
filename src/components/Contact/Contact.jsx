@@ -1,12 +1,30 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact, editContact } from 'redux/contacts/actions';
-import Transitions from 'const/transition';
+import { Input, Button, ButtonFilled, Box, Item } from './Contact.styled';
+import { confirmAlert } from 'react-confirm-alert';
+import './react-confirm-alert.css';
+import PropTypes from 'prop-types';
 
 const Contact = ({ contact, contactToEdit, onEdit }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    dispatch(deleteContact(contact.id));
+    confirmAlert({
+      title: 'Confirm Delete',
+      message: 'Are you sure you want to delete this contact?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => {
+            dispatch(deleteContact(contact.id));
+          },
+        },
+        {
+          label: 'No',
+          onClick: () => {},
+        },
+      ],
+    });
   };
 
   const handleEdit = () => {
@@ -26,34 +44,43 @@ const Contact = ({ contact, contactToEdit, onEdit }) => {
   };
 
   return (
-    <Transitions>
-      <li>
-        <div>
-          {contactToEdit === contact.id ? (
-            <Transitions>
-              <form autoComplete="off" onSubmit={handleSave}>
-                <input type="text" name="name" placeholder={contact.name} />
-                <input type="text" name="number" placeholder={contact.number} />
-                <button type="submit">Save</button>
-              </form>
-            </Transitions>
-          ) : (
-            <>
-              <input type="text" name="name" value={contact.name} disabled />
-              <input
-                type="text"
-                name="number"
-                value={contact.number}
-                disabled
-              />
-              <button onClick={handleEdit}>Edit</button>
-              <button onClick={handleDelete}>Delete</button>
-            </>
-          )}
-        </div>
-      </li>
-    </Transitions>
+    <Item>
+      {contactToEdit === contact.id ? (
+        <form autoComplete="off" onSubmit={handleSave}>
+          <Box>
+            <div>
+              <Input type="text" name="name" placeholder={contact.name} />
+              <Input type="tel" name="number" placeholder={contact.number} />
+            </div>
+            <div>
+              <ButtonFilled type="submit">Save</ButtonFilled>
+            </div>
+          </Box>
+        </form>
+      ) : (
+        <Box>
+          <div>
+            <Input type="text" name="name" value={contact.name} disabled />
+            <Input type="tel" name="number" value={contact.number} disabled />
+          </div>
+          <div>
+            <ButtonFilled onClick={handleEdit}>Edit</ButtonFilled>
+            <Button onClick={handleDelete}>Delete</Button>
+          </div>
+        </Box>
+      )}
+    </Item>
   );
+};
+
+Contact.propTypes = {
+  contact: PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    number: PropTypes.number,
+  }),
+  contactToEdit: PropTypes.string,
+  onEdit: PropTypes.func,
 };
 
 export default Contact;

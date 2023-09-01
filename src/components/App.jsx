@@ -14,6 +14,7 @@ import AboutPage from 'pages/AboutPage/AboutPage';
 import { Spinner } from './App.styled';
 import { Circles } from 'react-loader-spinner';
 import UserPage from 'pages/UserPage/UserPage';
+import ErrorPage from 'pages/ErrorPage/ErrorPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ export const App = () => {
             <PrivateRoute redirectTo="/login" component={<UserPage />} />
           }
         />
+        <Route path="*" element={<ErrorPage />} />
       </Route>
       <Route
         path="/register"
