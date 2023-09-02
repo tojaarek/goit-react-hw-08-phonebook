@@ -24,10 +24,10 @@ const AboutPage = () => (
             Made with love <br /> as a final project
           </Headline>
           <Description style={{ marginBottom: 120 }}>
-            I designed and developed the monoContact app as my final project of
-            the React.js module during the GO IT course. Seamlessly create an
-            account or log into an&nbsp;existing one. Effortlessly add, edit,
-            view, and delete contacts. <br /> Simplify your life with
+            I designed and developed the monoContact app as my final project
+            of&nbsp;the&nbsp;React.js module during the GO IT course. Seamlessly
+            create an account or log into an&nbsp;existing one. Effortlessly
+            add, edit, view, and delete contacts. <br /> Simplify your life with
             streamlined contact management.
           </Description>
           <ButtonFilled to="/register">Get started</ButtonFilled>

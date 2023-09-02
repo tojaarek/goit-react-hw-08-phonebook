@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { devices } from 'const/breakepoints';
 
 export const Section = styled.section`
   padding-left: 20px;
@@ -9,10 +10,28 @@ export const Section = styled.section`
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: 320px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media only screen and ${devices.xs} {
+    max-width: 360px;
+  }
+  @media only screen and ${devices.sm} {
+    max-width: 576px;
+  }
+  @media only screen and ${devices.md} {
+    max-width: 768px;
+  }
+  @media only screen and ${devices.lg} {
+    max-width: 1024px;
+  }
+  @media only screen and ${devices.xl} {
+    max-width: 1280px;
+  }
+  @media only screen and ${devices.xxl} {
+    max-width: 1600px;
+  }
 `;
 
 export const Button = styled(Link)`
@@ -29,6 +48,21 @@ export const Button = styled(Link)`
     color: #262626;
     border: 2px solid #fbfbfb;
     background-color: #fbfbfb;
+  }
+  @media only screen and ${devices.xs} {
+  }
+  @media only screen and ${devices.sm} {
+  }
+  @media only screen and ${devices.md} {
+  }
+  @media only screen and ${devices.lg} {
+    font-size: 16px;
+  }
+  @media only screen and ${devices.xl} {
+    font-size: 18px;
+  }
+  @media only screen and ${devices.xxl} {
+    font-size: 20px;
   }
 `;
 
@@ -48,6 +82,21 @@ export const ButtonFilled = styled(Link)`
     border: 2px solid #ff8a05;
     background-color: #ff8a05;
   }
+  @media only screen and ${devices.xs} {
+  }
+  @media only screen and ${devices.sm} {
+  }
+  @media only screen and ${devices.md} {
+  }
+  @media only screen and ${devices.lg} {
+    font-size: 16px;
+  }
+  @media only screen and ${devices.xl} {
+    font-size: 18px;
+  }
+  @media only screen and ${devices.xxl} {
+    font-size: 20px;
+  }
 `;
 
 export const Headline = styled.h1`
@@ -56,12 +105,44 @@ export const Headline = styled.h1`
   margin-bottom: 50px;
   margin-top: 0;
   font-weight: 700;
+  @media only screen and ${devices.xs} {
+  }
+  @media only screen and ${devices.sm} {
+  }
+  @media only screen and ${devices.md} {
+  }
+  @media only screen and ${devices.lg} {
+    font-size: 44px;
+  }
+  @media only screen and ${devices.xl} {
+    font-size: 54px;
+  }
+  @media only screen and ${devices.xxl} {
+    font-size: 64px;
+  }
 `;
 
 export const Description = styled.p`
   font-size: 18px;
   line-height: 1.5;
   margin-bottom: 50px;
+  @media only screen and ${devices.xs} {
+  }
+  @media only screen and ${devices.sm} {
+  }
+  @media only screen and ${devices.md} {
+  }
+  @media only screen and ${devices.lg} {
+    font-size: 14px;
+    max-width: 600px;
+  }
+  @media only screen and ${devices.xl} {
+    font-size: 16px;
+    max-width: 680px;
+  }
+  @media only screen and ${devices.xxl} {
+    font-size: 18px;
+  }
 `;
 
 export const TextBox = styled.div`
@@ -75,6 +156,20 @@ export const Bullets = styled.ul`
   margin-bottom: 150px;
   display: flex;
   justify-content: space-between;
+  @media only screen and ${devices.xs} {
+  }
+  @media only screen and ${devices.sm} {
+  }
+  @media only screen and ${devices.md} {
+  }
+  @media only screen and ${devices.lg} {
+    margin-bottom: 100px;
+  }
+  @media only screen and ${devices.xl} {
+    margin-bottom: 150px;
+  }
+  @media only screen and ${devices.xxl} {
+  }
 `;
 
 export const BulletItem = styled.li`
@@ -85,6 +180,24 @@ export const BulletItem = styled.li`
 export const BulletImage = styled.img`
   width: 30px;
   height: 30px;
+  @media only screen and ${devices.xs} {
+  }
+  @media only screen and ${devices.sm} {
+  }
+  @media only screen and ${devices.md} {
+  }
+  @media only screen and ${devices.lg} {
+    width: 26px;
+    height: 26px;
+  }
+  @media only screen and ${devices.xl} {
+    width: 28px;
+    height: 28px;
+  }
+  @media only screen and ${devices.xxl} {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const ImageText = styled.p`
@@ -94,6 +207,24 @@ export const ImageText = styled.p`
   font-weight: 500;
   margin-left: 5px;
   height: 21px;
+  @media only screen and ${devices.xs} {
+  }
+  @media only screen and ${devices.sm} {
+  }
+  @media only screen and ${devices.md} {
+  }
+  @media only screen and ${devices.lg} {
+    font-size: 16px;
+    height: 16px;
+  }
+  @media only screen and ${devices.xl} {
+    font-size: 18px;
+    height: 19px;
+  }
+  @media only screen and ${devices.xxl} {
+    font-size: 20px;
+    height: 21px;
+  }
 `;
 
 export const Circle = styled.div`
@@ -113,4 +244,25 @@ export const ImageBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and ${devices.xs} {
+    max-width: 360px;
+  }
+  @media only screen and ${devices.sm} {
+    max-width: 576px;
+  }
+  @media only screen and ${devices.md} {
+    max-width: 768px;
+  }
+  @media only screen and ${devices.lg} {
+    width: 500px;
+    height: 500px;
+  }
+  @media only screen and ${devices.xl} {
+    width: 600px;
+    height: 600px;
+  }
+  @media only screen and ${devices.xxl} {
+    width: 800px;
+    height: 800px;
+  }
 `;
