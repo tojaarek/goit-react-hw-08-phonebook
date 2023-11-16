@@ -4,7 +4,11 @@
 * [Setup](#setup)
 
 ## General info
-monoContact is a react app to store and manage contacts on your own user account. monoContact backend repo is avaible here: https://github.com/tojaarek/monocontact-backend
+monoContact is a react app to store and manage contacts on your own user account.
+Live preview: tojaarek.github.io/goit-react-hw-08-phonebook/
+
+
+monoContact backend repo is avaible here: https://github.com/tojaarek/monocontact-backend
 	
 ## Technologies
 Project is created with:
